@@ -12,21 +12,22 @@ start_point = 168
 max_point = 216
 
 #setting up starting points for each week
-start_pointtwo = start_point + 168
-start_pointthree = start_point + 168 * 2
-start_pointfour = start_point + 168 * 3
+
 #empty list to append results, used later on for .csv requirement
 '''results = []'''
 
 #for loop calculating per hour
-for start_point in range(max_point):
+for start_point in range(168, max_point):
     #obtaining variables
+    start_pointtwo = start_point + 168
+    start_pointthree = start_point + 336
+    start_pointfour = start_point + 504
     point_weekone = df_reversed.iloc[start_point]['Water Flow Rate']
     point_weektwo = df_reversed.iloc[start_pointtwo]['Water Flow Rate']
     point_weekthree = df_reversed.iloc[start_pointthree]['Water Flow Rate']
     point_weekfour = df_reversed.iloc[start_pointfour]['Water Flow Rate']
     
-    print(f"Week 1: {point_weekone:2f}, Week 2: {point_weektwo:2f}, Week 3: {point_weekthree:2f}, Week 4: {point_weekfour:2f}")
+    #print(f"Week 1: {point_weekone:2f}, Week 2: {point_weektwo:2f}, Week 3: {point_weekthree:2f}, Week 4: {point_weekfour:2f}")
     #calculate variables for new flow
     flow_one = 0.5 * point_weekone
     flow_two= 0.25 * point_weektwo
@@ -37,4 +38,3 @@ for start_point in range(max_point):
     Qnew_point = start_point - 168
     print(f"Qnew{Qnew_point}: {Qnew:2f}")
     
-    start_point += 1
