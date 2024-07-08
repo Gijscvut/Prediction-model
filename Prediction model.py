@@ -2,7 +2,7 @@ import pandas as pd
 
 import csv
 
-#import datetime
+import matplotlib.pyplot as plt
 
 #Read data from the Excel document, nrows depends on latest value
 df = pd.read_excel(r'SERENE water consumption behavior copy.xlsx', sheet_name='weekend', nrows = 6834)
@@ -50,7 +50,7 @@ with open('Predicted consumption.csv', 'w', newline='') as csvfile:
         flow_four = 0.125 * point_weekfour
         
         #new predicted flow
-        Qnew = flow_one + flow_two + flow_three + flow_four
+        Qnew = (flow_one + flow_two + flow_three + flow_four) * 60
         
         #setting variable to print number per hour
         
@@ -63,4 +63,14 @@ with open('Predicted consumption.csv', 'w', newline='') as csvfile:
     #write data in document for every step (out of the lists)
     predictdoc.writerows([time, results]) #need to figure out how to write in 2 rows
         #Qnew_point should be adjusted with some function with datetime, probably something like '%Y-%m-%d %H:00'
-    
+    #plotting results in a graph
+    plt.plot(time, results, color = 'b', linestyle = 'solid', 
+         marker = 'o',label = "Qnew") 
+  
+    plt.xticks(rotation = 0) 
+    plt.xlabel('Time') 
+    plt.ylabel('Heated water flow (Liter/hour)') 
+    plt.title('Predicted heated water flow', fontsize = 20) 
+    plt.grid() 
+    plt.legend() 
+    plt.show() 
