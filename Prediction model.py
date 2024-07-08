@@ -21,7 +21,7 @@ max_point = 216
 results = []
 time = []
 
-#setting csv file up to write predicted data, opening/writing file does NOT work yet
+#opening csv file
 with open('Predicted consumption.csv', 'w', newline='') as csvfile:
     predictdoc = csv.writer(csvfile)
     field = ["Time (date, hour)", "Water flow L/h"] #doesn't split in 2 columns, is ok
