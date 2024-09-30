@@ -76,4 +76,8 @@ with open('Predicted consumption.csv', 'w', newline='') as csvfile:
     plt.title('Predicted heated water flow', fontsize = 20) 
     plt.grid() 
     plt.legend() 
-    plt.show() 
+    #saving the graph as a figure before showing it in Spyder
+    plt.savefig("Results graph full week prediction" , dpi='figure' , format=None)
+    plt.show()
+    
+    #to save the graph as an image, the following line is used

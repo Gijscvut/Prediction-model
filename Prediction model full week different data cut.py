@@ -75,7 +75,5 @@ with open('Predicted consumption.csv', 'w', newline='') as csvfile:
     plt.ylabel('Heated water flow (Liter/hour)') 
     plt.title('Predicted heated water flow', fontsize = 20) 
     plt.grid() 
-    plt.legend()
-    #saving the graph as a figure before showing it in Spyder
-    plt.savefig("Results graph 48 hours" , dpi='figure' , format=None)
+    plt.legend() 
     plt.show() 
