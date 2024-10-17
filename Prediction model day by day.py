@@ -28,23 +28,17 @@ with open('Predicted consumption day by day.csv', 'w', newline='') as csvfile:
 #for loop calculating per hour in range of 48 hrs
     for start_point in range(49, max_point, -1):
         #starting point 4-2 days back
-        start_pointtwo = start_point + 48
+        start_pointtwoday = start_point + 48
         #starting point 6-4 days back
-        start_pointthree = start_point + 96
+        start_pointthreeday = start_point + 96
         #starting point 8-6 days back
-        start_pointfour = start_point + 144
+        start_pointfourday = start_point + 144
         #obtain flow for timestamps
         point_weekone = df_reversed.iloc[start_point]['hot water consumption [liter]']
-        point_weektwo = df_reversed.iloc[start_pointtwo]['hot water consumption [liter]']
-        point_weekthree = df_reversed.iloc[start_pointthree]['hot water consumption [liter]']
-        point_weekfour = df_reversed.iloc[start_pointfour]['hot water consumption [liter]']
-        #print(point_weekone * 60)
-        #print(point_weektwo * 60)
-        #print(point_weekthree * 60)
-        #print(point_weekfour * 60)
-        #test, commented because not necessary now
-        #print(f"Week 1: {point_weekone:2f}, Week 2: {point_weektwo:2f}, Week 3: {point_weekthree:2f}, Week 4: {point_weekfour:2f}")
-        
+        point_weektwo = df_reversed.iloc[start_pointtwoday]['hot water consumption [liter]']
+        point_weekthree = df_reversed.iloc[start_pointthreeday]['hot water consumption [liter]']
+        point_weekfour = df_reversed.iloc[start_pointfourday]['hot water consumption [liter]']
+       
         #calculate variables using the flow for each hour multiplied by the 'importance factor'
         flow_one = 0.5 * point_weekone
         flow_two= 0.25 * point_weektwo
@@ -57,11 +51,11 @@ with open('Predicted consumption day by day.csv', 'w', newline='') as csvfile:
         #setting variable to print number per hour
         
         Qnew_point = -start_point + 49
-        #print results, commented because it's only for testing
-        #print(f"Qnew {Qnew_point} hours ahead: {Qnew:2f}")
+        
         #appending lists which will be printed in .csv file
         results.append(Qnew)
         time.append(Qnew_point)
+        
     #write data in document for every step (out of the lists)
     predictdoc.writerows([time, results]) #need to figure out how to write in 2 rows
         #Qnew_point should be adjusted with some function with datetime, probably something like '%Y-%m-%d %H:00'

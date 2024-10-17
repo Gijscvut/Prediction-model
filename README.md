@@ -11,3 +11,4 @@ To be able to run the model as intended, please open the file from inside the ma
 The used dataset for this prediction model is 'Testing_prediction_model_data.xlsx'.
 The predicted consumption can be found in 'Predicted consumption.csv'.
 A visual representation of the data is created in .png files.
+There are 2 scripts. One will predict a full week ahead and one will predict the data for 48 hours ahead.
